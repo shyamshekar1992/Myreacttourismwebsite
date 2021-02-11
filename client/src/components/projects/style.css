@@ -1,0 +1,46 @@
+/* .User_card{
+  margin-right: 20%;
+  margin-left: 20%;
+  width: auto;
+  height: 220px;
+  flex: 0 0 200px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(52, 94, 230, 0.38);
+  border-radius: 4px;
+  font:bolder;
+  color: rgb(3, 17, 1);
+} */
+.User_card1{
+  margin-right: 20%;
+  margin-left: 20%;
+  width: auto;
+  height: 300px ;
+  flex: 0 0 200px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(52, 94, 230, 0.38);
+  border-radius: 9px;
+  font:bolder;
+  color: rgb(3, 17, 1);
+
+}
+.User_card3{
+  margin-right: 20%;
+  margin-left: 20%;
+  width: auto;
+  height: 300px ;
+  flex: 0 0 100px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(52, 94, 230, 0.38);
+  border-radius: 40px;
+  font:bolder;
+  color: rgb(45, 212, 23);
+  background: rgb(236, 217, 217);
+  align-items: center;
+
+  flex-direction: row;
+  font-family: Gilroy;
+
+
+  
+
+}

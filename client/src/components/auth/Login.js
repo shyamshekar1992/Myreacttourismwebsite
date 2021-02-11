@@ -2,12 +2,14 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form'
+
 
 class Login extends Component {
 
   // this.props.updateCurrentUser
 
-  state = { username: "", password: "" };
+  state = { username: "", password: "", };
 
 
   handleFormSubmit = (event) => {
@@ -31,17 +33,25 @@ class Login extends Component {
   render() {
     return (
       <div>
+
         <form onSubmit={this.handleFormSubmit}>
           <label>username:</label>
           <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
-          <label>Description:</label>
+          <br></br>
+          <label>password:</label>
           <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
+          <br></br>
+
+
+
 
           <input type="submit" value="Submit" />
         </form>
-      </div>
+
+      </div >
     )
   }
 }
+
 
 export default Login;

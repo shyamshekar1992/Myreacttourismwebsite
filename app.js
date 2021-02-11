@@ -4,10 +4,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const favicon = require('serve-favicon');
-const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
+// const emailRoutes = require("./routes/emailRoutes");
+// const { sendEmail } = require("../controller/emailController");
+
 
 
 mongoose
@@ -65,12 +67,19 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const index = require('./routes/index');
+const cors = require("cors");
+
 app.use('/', index);
 
 app.use('/api', require('./routes/projects'));
 
 
+
 app.use('/api', require('./routes/auth'));
+// app.use("/api/email", emailRoutes);
+
+// router.post("/", sendEmail);
+
 
 
 module.exports = app;

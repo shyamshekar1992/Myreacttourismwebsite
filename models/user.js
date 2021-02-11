@@ -3,10 +3,22 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   username: String,
-  password: String
-}, {
-  timestamps: true
-});
+  password: String,
+  firstname: String,
+  lastname: String,
+  email: String,
+  phone: String,
+  address: String,
+  imageUrl: String,
+
+
+  cart: [{ ref: "Myplaces", type: Schema.Types.ObjectId }],
+},
+
+  {
+    timestamps: true
+  }
+);
 
 const User = mongoose.model("User", userSchema);
 

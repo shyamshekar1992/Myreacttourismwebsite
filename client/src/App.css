@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(175, 226, 190);
 }
 
 .App-link {
@@ -36,3 +36,136 @@
     transform: rotate(360deg);
   }
 }
+
+#darkMode {
+  background: transparent url("https://p.kindpng.com/picc/s/155-1556922_transparent-3o6ZsYezqjqsFFWrNm-moon-clipart-yellow-crescent-moon-png.png") no-repeat center;
+  background-size: 30px 30px;
+  width: 45px;
+  height: 45px;
+  filter: grayscale(100%);
+  border: none;
+  border-radius: 0%;
+  transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+#darkMode:hover,
+#darkMode:focus {
+  filter: none;
+  background-color: rgb(244, 248, 244);
+  cursor: pointer;
+}
+
+#darkMode.clicked {
+  background: transparent url("http://www.pngall.com/wp-content/uploads/2016/07/Sun-Free-PNG-Image.png") no-repeat center;
+  background-size: 30px 30px;
+  filter: none !important;
+  background-color: rgb(9, 9, 10);
+}
+:root {
+  --blue: rgb(189, 238, 231);
+  --white: rgba(0, 0, 0, 0.877);
+}
+
+body.light {
+  --background-color: var(--white);
+  --text-color: var(--blue);
+  --font-weight: 400;
+  --image: url("http://www.pngall.com/wp-content/uploads/2016/07/Sun-Free-PNG-Image.png");
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
+  transition:  background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+#image {
+  width: 100%;
+  height: 300px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background-image 0.7s ease-in-out;
+  background-image: var(--image);
+}
+
+
+
+.calendar .header .icon {
+  cursor: pointer;
+  transition: .15s ease-out;
+}
+
+.calendar .header .icon:hover {
+  transform: scale(1.75);
+  transition: .25s ease-out;
+  color: var(--main-color);
+}
+
+.calendar .header .icon:first-of-type {
+  margin-left: 1em;
+}
+
+.calendar .header .icon:last-of-type {
+  margin-right: 1em;
+}
+
+.calendar .days {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--text-color-light);
+  font-size: 70%;
+  padding: .75em 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .body .cell {
+  position: relative;
+  height: 5em;
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--neutral-color);
+  transition: 0.25s ease-out;
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 8px;
+  padding: auto;
+  overflow: hidden;
+  background-color: #94c1f5;
+  bottom: 0;
+  width: 100%;
+ }
+ 
+ 
+ li {
+  float: left;
+  border-right: 2px solid white;
+ }
+ 
+ /* Add a border to all( but not the last) list items */
+ li:last-child { 
+  border-right: none;
+ }
+ 
+ li a {
+  display: block;
+  color: white;
+  text-align: left;
+  padding: 15px 87px;
+  text-decoration: none;
+ }
+ 
+ /* Links will change color when hovered over */
+ li a:hover {
+  background-color: #45d486;
+ }
+ 
+ .active {
+  background-color: #2aa5bb;
+ }
