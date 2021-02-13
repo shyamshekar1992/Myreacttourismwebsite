@@ -10,6 +10,7 @@ const userSchema = new Schema({
   phone: String,
   address: String,
   imageUrl: String,
+  purchased: [String],
 
 
   cart: [{ ref: "Myplaces", type: Schema.Types.ObjectId }],

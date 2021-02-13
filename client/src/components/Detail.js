@@ -10,7 +10,8 @@ import { Jumbotron } from 'react-bootstrap'
 class Details extends Component {
   state = {
     singlePlace: {},
-    newreviews: ''
+    newreviews: '',
+    related: []
 
 
   }
@@ -20,12 +21,15 @@ class Details extends Component {
   componentDidMount() {
     console.log(this.props)
     let id = this.props.match.params.potato
+    const place = this.props.location.state.singlePlace
+    const related = this.props.location.state.related
+    this.setState({ singlePlace: place, related })
 
-    axios.get(`/api/projects/${id}`).then((resp) => {
+    /* axios.get(`/api/projects/${id}`).then((resp) => {
       this.setState({ singlePlace: resp.data })
 
     }
-    )
+    ) */
   }
 
 
@@ -109,24 +113,17 @@ class Details extends Component {
             </Jumbotron>
 
 
+            <Jumbotron>
 
 
-            <button onClick={() => this.addProductToCart(this.state.singlePlace._id)}
+              <button onClick={() => this.addProductToCart(this.state.singlePlace._id)}
 
-            >Add to Cart</button>
-            <button onClick={() => this.addProducttoDB(this.state.singlePlace._id)}
+              >Add to Cart</button>
+              <button onClick={() => this.addProducttoDB(this.state.singlePlace._id)}
 
 
-              color="black" outlined rounded size="large" >Favourites</button>
-
-            <h3>Reviews</h3>
-            {this.state.singlePlace.reviews.map(review => {
-              return (<div>
-                <p>posted by <br></br> {review}</p>
-
-              </div>)
-
-            })}
+                color="black" outlined rounded size="large" >Favourites</button>
+            </Jumbotron>
             {this.props.currentUser && this.props.currentUser.username &&
               <div>
                 <input onChange={this.changeNameHandler} value={this.state.newreviews} type="text"></input>
@@ -134,6 +131,27 @@ class Details extends Component {
                 <button onClick={() => this.addNewreviewhandler(this.state.singlePlace._id)} > Add a review </button>
               </div>
             }
+            <Jumbotron>
+
+              <h3>Reviews</h3>
+              {this.state.singlePlace.reviews.map(review => {
+                return (<div>
+                  <p>posted by <br></br> {review}</p>
+
+                </div>)
+
+
+              })}
+            </Jumbotron>
+
+            {this.state.related.map(related => {
+              return (<div>
+                <p>{related.name}</p>
+
+              </div>)
+
+
+            })}
 
           </div>
 

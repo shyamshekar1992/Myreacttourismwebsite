@@ -29,14 +29,15 @@ export default class Nav2 extends React.Component {
                 <Link className="Nav__link" to="/Random">Offers</Link>
               </li>
               <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Offers</Link>
+                <Link className="Nav__link" to="/Random">Career</Link>
               </li>
               <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Offers</Link>
+                <Link className="Nav__link" to="/Random">Tour Pics</Link>
               </li>
               <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Offers</Link>
+                <Link aria-disabled className="Nav__link" to="/Random">Admin Panel</Link>
               </li>
+
             </ul>
           </div>
         </div>

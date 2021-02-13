@@ -15,6 +15,7 @@ const projectSchema = new Schema(
     likes: String,
     room: Boolean,
     type: Number,
+    region: String,
   },
   {
     timestamps: true

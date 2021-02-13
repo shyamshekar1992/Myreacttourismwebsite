@@ -45,6 +45,7 @@
     "react-elastic-carousel": "^0.11.1",
     "react-ga": "^3.3.0",
     "react-infinite-image-link-carousel": "^0.8.43",
+    "react-loadingg": "^1.7.2",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-moment": "^1.1.1",
     "react-payment-request-api": "^3.1.0",
@@ -54,7 +55,8 @@
     "serve-favicon": "^2.5.0",
     "socket.io": "^3.1.0",
     "stripe": "^8.135.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "use-dencrypt-effect": "^1.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

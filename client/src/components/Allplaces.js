@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import Card from 'react-bootstrap/Card'
 
 
 
@@ -95,21 +95,30 @@ class Allplaces extends Component {
       <div>
 
         {this.state.places.map(e => {
+          let relatedPlaces = this.state.places.filter(related => related.region === e.region && related._id !== e._id)
+          console.log(relatedPlaces)
           return (
             <div>
 
 
-
-              <h1> <Link to={"Place/" + e._id} >{e.name}</Link></h1>
-              <p>{e.description}</p>
-
-              <img src={e.img}></img>
-              <p>likes:{e.likes}</p>
-              <button onClick={() => this.addLikesHandler(e._id)} disabled={this.state.button1Disabled}> Like </button>
-              <button onClick={() => this.addDislikeHandler(e._id)} disabled={this.state.button2Disabled} > Unlike </button>
+              <Card style={{ width: '18rem' }}>
+                <Card.Body>
 
 
+                  <Card.Title> <h1> <Link to={{ pathname: `Place/ + ${e._id}`, state: { singlePlace: e, related: relatedPlaces } }} >{e.name}</Link></h1></Card.Title>
+                  <Card.Text>
 
+                    <p>{e.description}</p>
+                  </Card.Text>
+
+                  <Card.Img variant="top" src={e.img} />
+                  <p>likes:{e.likes}</p>
+                  <button onClick={() => this.addLikesHandler(e._id)} disabled={this.state.button1Disabled}> Like </button>
+                  <button onClick={() => this.addDislikeHandler(e._id)} disabled={this.state.button2Disabled} > Unlike </button>
+                </Card.Body>
+
+
+              </Card>
 
 
             </div>

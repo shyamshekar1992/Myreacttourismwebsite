@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 const Project = require('../models/project');
+const User = require('../models/user');
 
 
 // GET route => to get all the projects
@@ -63,29 +64,33 @@ router.delete('/projects/:id', (req, res, next) => {
 const stripe = require('stripe')('sk_test_51IJTHJFDXsNZkRh1BHAgAneXmIEs4y8qVSbGITxZrX9QUBOIbnGEf26aQtVnBdxaohhcJ2OY0QKltDCIxugs7EXp00yVTLA3GC');
 
 const YOUR_DOMAIN = 'http://localhost:3000/kart'; // have to change before DEPLOY !
-router.post('/create-checkout-session', async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: 'Some room in Moscow',
-            images: ['https://i.imgur.com/EHyR2nP.png'],
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: `${YOUR_DOMAIN}?success=true`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+router.post('/payment', async (req, res) => {
+  const body = {
+    source: req.body.token.id,
+    amount: req.body.amount,
+    currency: 'eur',
+    name: req.body.name,
+
+  };
+
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
+    if (stripeErr) {
+      res.status(500).send({ error: stripeErr });
+    } else {
+      res.status(200).send({ success: stripeRes });
+    }
   });
-  res.json({ id: session.id });
 });
+router.post('/sucess', (req, res) => {
+  console.log("pushed pricrei in db", req.body.data.price)
+  User.findByIdAndUpdate(req.session.currentUser._id, {
+    $push: { purchased: req.body.data.price }
+    //cart: [req.body.newCartItem]
+  }).then((result) => {
+    res.json({ msg: 'update success' })
+  })
 
 
+});
 
 module.exports = router;

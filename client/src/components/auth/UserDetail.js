@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Jumbotron, Container } from 'react-bootstrap'
+
 
 
 class UserSetail extends Component {
@@ -29,38 +31,7 @@ class UserSetail extends Component {
     )
   }
 
-  handleFormSubmit = (event) => {
-    event.preventDefault();
 
-    const firstname = this.state.firstname;
-    const lastname = this.state.lastname;
-    const email = this.state.email;
-    const phone = this.state.phone;
-    const address = this.state.address;
-
-
-    axios.put(`/api/user-edit`, { firstname, lastname, email, phone, address })
-      .then(response => {
-        axios.get(`/api/profile/${this.props.currentUser._id}`,).then((resp) => {
-          console.log(resp.data)
-          let { firstname, lastname, email, phone, address, cart } = resp.data;
-          if (resp.data.cart[0] !== null) {
-            this.setState({ firstname, lastname, email, phone, address, cart })
-          }
-          else {
-            this.setState({ firstname, lastname, email, phone, address })
-          }
-
-
-        }
-        )
-      })
-  }
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
 
   addProductToCart(id) {
 
@@ -118,13 +89,16 @@ class UserSetail extends Component {
 
     return (
       <div>
+        <Jumbotron fluid>
+          <Container>
+            <h1>name:{this.state.firstname}</h1>
+            <h2>Lastname:{this.state.lastname}</h2>
 
-        <h1>name:{this.state.firstname}</h1>
-        <h2>Lastname:{this.state.lastname}</h2>
-
-        <h3>address:{this.state.address}</h3>
-        <h4>email:{this.state.email}</h4>
-        <h5>phone:{this.state.phone}</h5>
+            <h3>address:{this.state.address}</h3>
+            <h4>email:{this.state.email}</h4>
+            <h5>phone:{this.state.phone}</h5>
+          </Container>
+        </Jumbotron>
         <br></br>
         <h6>your favourites</h6>
         <br></br>
@@ -134,38 +108,24 @@ class UserSetail extends Component {
           this.state.cart.map(e => {
             return (
               <div>
+                <Jumbotron fluid>
+                  <Container>
 
-                <Link to={"Place/" + e._id} >{e.name}</Link>
-                {<p>{e.description}</p>}
-                {<p>{e.price}</p>}
+                    <Link to={"Place/" + e._id} >{e.name}</Link>
+                    {<p>{e.description}</p>}
+                    {<p>{e.price}</p>}
 
-                <button onClick={() => this.addProductToCart(e._id)}
+                    <button onClick={() => this.addProductToCart(e._id)}
 
-                >Add to Cart</button>
-                <button onClick={() => this.deleteItemfromFav(e._id)} >delete </button>
-
+                    >Add to Cart</button>
+                    <button onClick={() => this.deleteItemfromFav(e._id)} >delete </button>
+                  </Container>
+                </Jumbotron>
               </div>
             )
           })
         }
 
-
-
-
-        <form onSubmit={this.handleFormSubmit}>
-          <label>firstname:</label>
-          <input type="firstname" name="firstname" placeholder={this.state.firstname} value={this.state.firstname} onChange={e => this.handleChange(e)} />
-          <label>lastname:</label>
-          <input type="lastname" name="lastname" value={this.state.lastname} onChange={e => this.handleChange(e)} />
-          <label>email:</label>
-          <input type="email" name="email" value={this.state.email} onChange={e => this.handleChange(e)} />
-          <label>phone:</label>
-          <input type="phone" name="phone" value={this.state.phone} onChange={e => this.handleChange(e)} />
-          <label>address:</label>
-          <input type="address" name="address" value={this.state.address} onChange={e => this.handleChange(e)} />
-
-          <input type="submit" value="Submit" />
-        </form>
       </div>
 
     )

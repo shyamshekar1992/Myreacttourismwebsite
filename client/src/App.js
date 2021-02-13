@@ -2,6 +2,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import { Jumbotron } from 'react-bootstrap'
 
 import Signup from './components/auth/Signup'
 import Login from './components/auth/Login'
@@ -23,8 +24,13 @@ import Cal from './components/Calender'
 import Newroom from './components/NewRoom'
 import NavBar from './components/Navbar'
 import Cars from './components/projects/Cars'
+import Navbar from 'react-bootstrap/Navbar'
+import Button from 'react-bootstrap/Button'
+import Nav2 from './components/Nav2'
 
-
+import Badge from 'react-bootstrap/Badge'
+import Form from "./components/Form"
+import Drcypt from './components/MagicText'
 
 
 
@@ -32,14 +38,10 @@ import Cars from './components/projects/Cars'
 // import Agents from './Agent';
 
 
-
-
-
-
-// import Form from "./components/Form"
-
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import AllplacesSB from './components/projects/AllplacesSB';
+import Userupdate from './components/auth/UserUpdate';
+
 // import TestChat from './components/TestChat';
 
 
@@ -74,11 +76,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <Logout />
+        <Button variant="primary">
+          <Link to={"Kart/"} >kart</Link> <Badge variant="light">{(this.state.products).length}</Badge>
+          <span className="sr-only"></span>
+
+        </Button>
 
         <NavBar />
-        {/* <Cars /> */}
-
-        {this.state.currentUser ? <h1>Welcome, {this.state.currentUser.firstname} </h1>
+        <Nav2 />
+        {this.state.currentUser ? <Jumbotron>
+          <h1>Welcome, {this.state.currentUser.firstname} </h1></Jumbotron>
 
 
 
@@ -92,26 +99,32 @@ class App extends React.Component {
               <Login updateCurrentUser={this.updateCurrentUser} ></Login>
             </div>
           )}
-        {/* <Form /> */}
-        <h1>{(this.state.products).length}</h1>
 
 
-
-
-        <Logout />
+        {/* <Cars /> */}
 
 
         <Switch>
-          <Route exact path='/' component={Home}></Route>
+          <Route exact path='/' component={Cars}></Route>
+
+
+          <Route exact path='/Chatroom' component={Home}></Route>
           <Route exact path='/All' component={Places}></Route>
+          {/* <Route exact path='/Europe' component={Europe}></Route> */}
+
           <Route exact path='/login' component={Places}></Route>
-          <Route exact path='/car' component={Cars}></Route>
+          <Route exact path='/magic' component={Drcypt}></Route>
+          <Route exact path='/Userupdate' render={() => <Userupdate currentUser={this.state.currentUser} />}></Route>
+
+
 
 
 
           <Route exact path='/Place/:potato' render={(props) => { return <Detailplaces {...props} currentUser={this.state.currentUser} /> }}></Route>
           <Route exact path='/Search' component={AllplacesSB}></Route>
           <Route exact path='/kart' component={Cart}></Route>
+          <Route exact path='/Form' component={Form}></Route>
+
           <Route exact path='/User' render={() => <UserDetail currentUser={this.state.currentUser} />}></Route>
           <Route exact path='/weather' component={Weather}></Route>
           <Route exact path="/chat/:roomId" component={Chatroom} />

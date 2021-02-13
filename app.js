@@ -68,6 +68,12 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 const index = require('./routes/index');
 const cors = require("cors");
+app.use(
+  cors({
+    credentials: true,
+    origin: [process.env.CLIENT_HOSTNAME],
+  })
+);
 
 app.use('/', index);
 
