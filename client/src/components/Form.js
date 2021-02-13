@@ -60,7 +60,7 @@ export default () => {
   }
   return (
     <main>
-      <h1>React and Formspree</h1>
+      <h1>Fill the contact form if you have any queries we will get back to you as soon as possible!</h1>
       <hr />
       <form onSubmit={handleOnSubmit}>
         <label htmlFor="name">Name</label>
@@ -72,6 +72,10 @@ export default () => {
           required
           value={inputs.name}
         />
+        <br></br>
+        <br></br>
+        <br></br>
+
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -81,6 +85,10 @@ export default () => {
           required
           value={inputs.email}
         />
+
+        <br></br>
+        <br></br>
+        <br></br>
         <label htmlFor="message">Message</label>
         <textarea
           id="message"
@@ -89,6 +97,12 @@ export default () => {
           required
           value={inputs.message}
         />
+
+        <br></br>
+        <br></br>
+        <br></br>
+
+
         <button type="submit" disabled={status.submitting}>
           {!status.submitting
             ? !status.submitted

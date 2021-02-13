@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import { Jumbotron } from 'react-bootstrap'
+
 
 const mapStyles = {
   width: '100%',
@@ -32,32 +34,42 @@ export class MapContainer extends Component {
   };
   render() {
     return (
-      <Map
-        google={this.props.google}
-        zoom={10}
-        style={mapStyles}
-        initialCenter={
-          {
-            lat: 52.524287
-            ,
-            lng: 13.346346
+      <div>
+        <Jumbotron>
+          <h1>Office address</h1>
+          <p>Altmoabit 72</p>
+          <p>10555,berlin</p>
+          <p>Germany</p>
+
+        </Jumbotron>
+
+        <Map
+          google={this.props.google}
+          zoom={10}
+          style={mapStyles}
+          initialCenter={
+            {
+              lat: 52.524287
+              ,
+              lng: 13.346346
+            }
           }
-        }
-      >
-        <Marker
-          onClick={this.onMarkerClick}
-          name={'Office address'}
-        />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
         >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-      </Map>
+          <Marker
+            onClick={this.onMarkerClick}
+            name={'Office address'}
+          />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h4>{this.state.selectedPlace.name}</h4>
+            </div>
+          </InfoWindow>
+        </Map>
+      </div>
     );
   }
 }

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import StripeCheckout from 'react-stripe-checkout';
+// import { Jumbotron } from 'react-bootstrap'
+import { Jumbotron } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
+import StripecheckoutButton from './StripeCheckout'
+
 
 export default class Shopping extends Component {
 
@@ -85,13 +89,16 @@ export default class Shopping extends Component {
             console.log("console............", this.state.totalPrice)
             return (
               <div >
-                <h4>{product.name}</h4>
-                <span>{product.description}</span>
-                <p>{product.quantity}</p>
-                <h4>${product.quantity * product.price}</h4>
-                <button onClick={() => this.deleteHandler(product._id)} >delete </button>
-                <button onClick={() => this.handleIncrementClick(product._id)} >+ </button>
-                <button onClick={() => this.handledecrementclick(product._id)} >- </button>
+                <Jumbotron>
+
+                  <h4>{product.name}</h4>
+                  <span>{product.description}</span>
+                  <p>{product.quantity}</p>
+                  <h4>${product.quantity * product.price}</h4>
+                  <Button variant="outline-dark" onClick={() => this.deleteHandler(product._id)} >delete </Button>
+                  <Button variant="outline-dark" onClick={() => this.handleIncrementClick(product._id)} >+ </Button>
+                  <Button variant="outline-dark" onClick={() => this.handledecrementclick(product._id)} >- </Button>
+                </Jumbotron>
 
 
                 <br></br>
@@ -99,11 +106,14 @@ export default class Shopping extends Component {
             )
           })
         }
+        <Jumbotron>
 
-        <h5>Final price {totalP} </h5>
-        <h5>total number of items {(this.state.products).length}  </h5>
+          <h5>Final price {totalP} </h5>
+          <h5>total number of items {(this.state.products).length}  </h5>
+          <StripecheckoutButton price={totalP} />
 
-        {/* <StripeCheckout stripeKey="" /> */}
+        </Jumbotron>
+
 
 
 

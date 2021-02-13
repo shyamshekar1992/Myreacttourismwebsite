@@ -18,7 +18,7 @@ const ChatRoom = (props) => {
 
   return (
     <div className="chat-room-container">
-      <h1 className="room-name">Room: {roomId}</h1>
+      <h1 className="room-name">Welcome to our customer support {roomId}</h1>
       <div className="messages-container">
         <ol className="messages-list">
           {messages.map((message, i) => (
@@ -27,7 +27,18 @@ const ChatRoom = (props) => {
               className={`message-item ${message.ownedByCurrentUser ? "my-message" : "received-message"
                 }`}
             >
+              <br></br>
+              <br></br>
+
+              <br></br>
+              <br></br>
+
               {message.body}
+              <br></br>
+              <br></br>
+
+              <br></br>
+              <br></br>
             </li>
           ))}
         </ol>

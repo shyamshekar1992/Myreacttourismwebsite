@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   color: rgb(175, 226, 190);
 }
@@ -130,16 +130,21 @@ body {
   transition: 0.25s ease-out;
 }
 
-
+@media all and (max-width: 480px) { 
+  .navigation li { flex-basis: 100%; } 
+  }
 
 ul {
   list-style-type: none;
-  margin: 8px;
-  padding: auto;
+  margin: 0px;
+  padding: 10px;
   overflow: hidden;
   background-color: #94c1f5;
   bottom: 0;
   width: 100%;
+  flex-direction: column;
+  text-align: center; 
+
  }
  
  
@@ -150,7 +155,8 @@ ul {
  
  /* Add a border to all( but not the last) list items */
  li:last-child { 
-  border-right: none;
+  border-right: 2px solid white;
+
  }
  
  li a {
@@ -159,6 +165,7 @@ ul {
   text-align: left;
   padding: 15px 87px;
   text-decoration: none;
+  flex-wrap: wrap-reverse;
  }
  
  /* Links will change color when hovered over */
@@ -167,5 +174,5 @@ ul {
  }
  
  .active {
-  background-color: #2aa5bb;
+  background-color: #0f1111;
  }
