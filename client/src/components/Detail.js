@@ -27,7 +27,7 @@ class Details extends Component {
 
     /* axios.get(`/api/projects/${id}`).then((resp) => {
       this.setState({ singlePlace: resp.data })
-
+ok
     }
     ) */
   }
