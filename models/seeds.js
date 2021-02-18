@@ -22,7 +22,7 @@ const Places = [
 
 const DB_NAME = 'projects-and-tasks';
 
-mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
+mongoose.connect(process.env.MONGODB_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
