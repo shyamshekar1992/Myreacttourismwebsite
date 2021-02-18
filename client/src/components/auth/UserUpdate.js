@@ -11,7 +11,7 @@ class UserUpdate extends Component {
 
 
   state = {
-    firstname: "", lastname: "", email: "", phone: "", address: "", cart: [],
+    firstname: "", lastname: "", email: "", phone: "", address: "", cart: [], profileImg: "",
   };
 
 
@@ -48,6 +48,15 @@ class UserUpdate extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
+  uploadHandler = (event) => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", event.target.files[0]);
+    axios.post("/api/upload", uploadData).then((resp) => {
+      this.setState({
+        profileImg: resp.data.secure_url,
+      });
+    });
+  };
 
 
   render() {
@@ -55,35 +64,38 @@ class UserUpdate extends Component {
 
     return (
       <div>
+        <section class="User_card">
 
-        <form onSubmit={this.handleFormSubmit1}>
-          <label>firstname:</label>
-          <input type="firstname" name="firstname" placeholder={this.state.firstname} value={this.state.firstname} onChange={e => this.handleChange(e)} />
+          <form onSubmit={this.handleFormSubmit1}>
+            <label>firstname:</label>
+            <input type="firstname" name="firstname" placeholder={this.state.firstname} value={this.state.firstname} onChange={e => this.handleChange(e)} />
+            <br></br>
 
-          <label>lastname:</label>
-
-
-          <input type="lastname" name="lastname" value={this.state.lastname} onChange={e => this.handleChange(e)} />
-          <br></br>
-
-          <label>email:</label>
+            <label>lastname:</label>
 
 
-          <input type="email" name="email" value={this.state.email} onChange={e => this.handleChange(e)} />
-          <br></br>
+            <input type="lastname" name="lastname" value={this.state.lastname} onChange={e => this.handleChange(e)} />
+            <br></br>
 
-          <label>phone:</label>
+            <label>email:</label>
 
-          <input type="phone" name="phone" value={this.state.phone} onChange={e => this.handleChange(e)} />
-          <br></br>
 
-          <label>address:</label>
+            <input type="email" name="email" value={this.state.email} onChange={e => this.handleChange(e)} />
+            <br></br>
 
-          <input type="address" name="address" value={this.state.address} onChange={e => this.handleChange(e)} />
-          <br></br>
+            <label>phone:</label>
 
-          <input type="submit" value="Submit" />
-        </form>
+            <input type="phone" name="phone" value={this.state.phone} onChange={e => this.handleChange(e)} />
+            <br></br>
+
+            <label>address:</label>
+
+            <input type="address" name="address" value={this.state.address} onChange={e => this.handleChange(e)} />
+            <br></br>
+            <input type="submit" value="Submit" />
+          </form>
+        </section>
+
       </div>
 
     )

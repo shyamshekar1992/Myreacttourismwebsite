@@ -9,8 +9,8 @@ const userSchema = new Schema({
   email: String,
   phone: String,
   address: String,
-  imageUrl: String,
-  purchased: [String],
+  profileImg: String,
+  purchased: [],
 
 
   cart: [{ ref: "Myplaces", type: Schema.Types.ObjectId }],

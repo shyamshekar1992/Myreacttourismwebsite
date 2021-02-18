@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "DEBUG=projects-and-tasks:* nodemon ./bin/www",
-    "dev-windows": "nodemon ./bin/www"
+    "dev-windows": "nodemon ./bin/www",
+    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "@datepicker-react/styled": "^2.7.0",
@@ -49,6 +50,7 @@
     "react-mailchimp-subscribe": "^2.1.0",
     "react-moment": "^1.1.1",
     "react-payment-request-api": "^3.1.0",
+    "react-star-rating": "^1.4.2",
     "react-stripe-checkout": "^2.6.3",
     "react-tracker": "0.0.8",
     "reactstrap": "^8.9.0",

@@ -1,4 +1,9 @@
 import React from 'react';
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import { Form, FormControl } from 'react-bootstrap';
+
+import Row from 'react-bootstrap/Row'
 
 
 let SearchBar = (props) => {
@@ -17,19 +22,52 @@ let SearchBar = (props) => {
     // will be 'true' or 'false'
     props.onStockChange(event.currentTarget.checked)
   }
+  let checkboxHandler3 = (event) => {
+    // will be 'true' or 'false'
+    props.onStockChange(event.currentTarget.checked)
+  }
+  let checkboxHandler4 = (event) => {
+    // will be 'true' or 'false'
+    props.onStockChange(event.currentTarget.checked)
+  }
 
 
   //props.onStockChange
 
   return (
     <div>
-      <input type="text" name="" id="" placeholder="Search here for your fav places ..." onChange={searchHandler} value={props.searchTerm} />
-      <br></br>
+      <Form inline className="mysearchbarform">
+        <div class="searchbar">
+          <FormControl type="text" name="" id="" placeholder="Search here for your fav places ..." onChange={searchHandler} value={props.searchTerm} />
+        </div>
+        <Container fluid>
+          <Container>
+            <Row>
+              <Col xs>First, but unordered</Col>
+              <Col xs={{ order: 12 }}>Second, but last</Col>
+              <Col xs={{ order: 1 }}>Third, but second</Col>
+            </Row>
+          </Container>
+          <Row>
+            <Col>
+              <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler} />
+              <p>price less than 100</p>
+            </Col>
+            <Col>
+              <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler2} />
+              <p>price less than 500</p>
 
-      <input type="checkbox" name="" id="" onChange={checkboxHandler} /> <h1>filter1</h1>
-      <br></br>
-      <input type="checkbox" name="" id="" onChange={checkboxHandler2} /> <h1>filter2 for products less or euqals 100</h1>
+              <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler3} />
+              <p>price less than 1000</p>
 
+              <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler4} />
+              <p>price less than 1200</p>
+            </Col>
+
+          </Row>
+        </Container>
+
+      </Form>
 
     </div>
   )

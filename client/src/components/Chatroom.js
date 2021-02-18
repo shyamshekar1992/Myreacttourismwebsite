@@ -28,16 +28,12 @@ const ChatRoom = (props) => {
                 }`}
             >
               <br></br>
-              <br></br>
 
-              <br></br>
               <br></br>
 
               {message.body}
               <br></br>
-              <br></br>
 
-              <br></br>
               <br></br>
             </li>
           ))}

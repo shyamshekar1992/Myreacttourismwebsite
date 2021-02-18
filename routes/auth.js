@@ -47,13 +47,7 @@ router.post('/user-signup', (req, res, next) => {
   })
 });
 
-// router.get('/:id/user-detailupdate', (req, res, next) => {
-//   console.log("user id", req.params.id);
-//   User.findById(req.params.id).then(user => {
-//     console.log("my user profile", user)
-//     res.render('user/edituser', { myUserDestails: user, user: user })
-//   })
-// });
+
 
 
 // LOGOUT
@@ -120,6 +114,15 @@ router.get('/profile/:id', (req, res, next) => {
   })
 
 });
+// router.get('/profile/:id', (req, res, next) => {
+
+//   User.findById(req.params.id).populate('purchased').then((user) => {
+//     res.json(user)
+
+
+//   })
+
+// });
 
 
 // ReactDOM.render(<App />, document.getElementById('root'));

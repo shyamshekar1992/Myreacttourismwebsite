@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #b8ffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   font-size: calc(10px + 2vmin);
-  color: rgb(175, 226, 190);
+  color: rgb(165, 222, 224);
 }
 
 .App-link {
@@ -51,7 +51,7 @@
 #darkMode:hover,
 #darkMode:focus {
   filter: none;
-  background-color: rgb(244, 248, 244);
+  background-color: rgb(22, 27, 26);
   cursor: pointer;
 }
 
@@ -91,6 +91,115 @@ body {
 }
 
 
+.mysearchbarform{
+
+  justify-content: center;
+}
+
+.mysearchbarform input {
+
+  width: 2000px !important;
+}
+
+.logout{
+  background-color: #b2dde9;
+}
+.User_card{
+  margin-right: 20%;
+  margin-left: 20%;
+  width: auto;
+  height: auto;
+  flex: 0 0 200px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(23, 33, 211, 0.38);
+  border-radius: 4px;
+  background-color: #c6e4ec;
+  font-family: Gilroy;
+  font-size:20px;
+  color: #1e27c9
+
+}
+.User_carduser{
+  margin-right: 20%;
+  margin-left: 20%;
+  width: auto;
+  height: auto;
+  flex: 0 0 200px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(0, 20, 18, 0.38);
+  border-radius: 4px;
+  background-color: #86d6ee9a;
+  font-family: Gilroy;
+  font-size:20px;
+  color: #acafd6
+
+}
+.h10{
+  background-color: #c6e4ec;
+}
+.User_carduser3{
+  margin-right: 20%;
+  margin-left: 20%;
+  width: auto;
+  height: auto;
+  flex: 0 0 200px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(128, 62, 43, 0.38);
+  border-radius: 50px;
+  background-color: #000000;
+  font-family: Gilroy;
+  font-size:20px;
+  color: #8dcece
+
+}
+.Kart-card{
+  margin-right: 20%;
+  margin-left: 20%;
+  margin-bottom: auto;
+  margin-top: 20px;
+
+  width: auto;
+  height: auto;
+  flex: 0 0 200px;
+  padding: 24px;
+  box-shadow: 2px 2px 6px 0px  rgba(23, 33, 211, 0.38);
+  border-radius: 4px;
+  background-color: #c6e4ec;
+  font-family: Gilroy;
+  font-size:20px;
+  color: #1e27c9
+
+}
+.form-container{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-family: Gilroy;
+  font-weight: 400;
+  font-size: 20px;
+  color: #2f3be0;
+}
+.form-container img{
+  width: 50%;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: bisque;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
 .calendar .header .icon {
   cursor: pointer;
@@ -134,45 +243,3 @@ body {
   .navigation li { flex-basis: 100%; } 
   }
 
-ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 10px;
-  overflow: hidden;
-  background-color: #94c1f5;
-  bottom: 0;
-  width: 100%;
-  flex-direction: column;
-  text-align: center; 
-
- }
- 
- 
- li {
-  float: left;
-  border-right: 2px solid white;
- }
- 
- /* Add a border to all( but not the last) list items */
- li:last-child { 
-  border-right: 2px solid white;
-
- }
- 
- li a {
-  display: block;
-  color: white;
-  text-align: left;
-  padding: 15px 87px;
-  text-decoration: none;
-  flex-wrap: wrap-reverse;
- }
- 
- /* Links will change color when hovered over */
- li a:hover {
-  background-color: #45d486;
- }
- 
- .active {
-  background-color: #0f1111;
- }

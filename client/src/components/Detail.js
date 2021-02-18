@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import WeatherFetch from './projects/Weather-berlin'
 import axios from 'axios';
 import { Jumbotron } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button'
+
 
 
 
@@ -11,7 +14,8 @@ class Details extends Component {
   state = {
     singlePlace: {},
     newreviews: '',
-    related: []
+    related: [],
+    places: []
 
 
   }
@@ -21,15 +25,19 @@ class Details extends Component {
   componentDidMount() {
     console.log(this.props)
     let id = this.props.match.params.potato
-    const place = this.props.location.state.singlePlace
-    const related = this.props.location.state.related
-    this.setState({ singlePlace: place, related })
+    //const place = this.props.location.state.singlePlace
+    //const related = this.props.location.state.related
+    //this.setState({ singlePlace: place, related })
+    axios.get('/api/projects').then((resp1) => {
+      console.log(resp1.data)
+      axios.get(`/api/projects/${id}`).then((resp2) => {
+        this.setState({ singlePlace: resp2.data, places: resp1.data })
+      }
+      )
 
-    /* axios.get(`/api/projects/${id}`).then((resp) => {
-      this.setState({ singlePlace: resp.data })
-ok
     }
-    ) */
+    )
+
   }
 
 
@@ -49,7 +57,7 @@ ok
     const oldproduct = localStorage.getItem('products') ? localStorage.getItem('products') : "[]";
     const arrayproduct = JSON.parse(oldproduct);
     let productsString = this.state.singlePlace;
-    //let products = this.state;
+    alert('Item added to your Kart')
 
     let existingPlaceWithSameId = arrayproduct.find(place => place._id === this.state.singlePlace._id)
     if (existingPlaceWithSameId) {
@@ -97,6 +105,10 @@ ok
 
 
   render() {
+
+    let relatedPlaces = this.state.places.filter(related => related.region === this.state.singlePlace.region && related._id !== this.state.singlePlace._id)
+    console.log(relatedPlaces)
+
     return (
       <div>
 
@@ -107,34 +119,37 @@ ok
 
             <Jumbotron>
               <h1>{this.state.singlePlace.name}</h1>
-              <h2>{this.state.singlePlace.description}</h2>
-              <h3>{this.state.singlePlace.price}</h3>
+              <h2>Description:{this.state.singlePlace.smalldescription}</h2>
+              <h3>Price:{this.state.singlePlace.price}</h3>
               <img src={this.state.singlePlace.img}></img>
+              <br></br>
+              {this.props.currentUser && (<div><Button onClick={() => this.addProductToCart(this.state.singlePlace._id)}
+
+              >Add to Cart</Button>
+                <Button onClick={() => this.addProducttoDB(this.state.singlePlace._id)}
+
+
+                  color="black" outlined rounded size="large" >Favourites</Button></div>
+              )
+              }
             </Jumbotron>
 
 
-            <Jumbotron>
 
 
-              <button onClick={() => this.addProductToCart(this.state.singlePlace._id)}
 
-              >Add to Cart</button>
-              <button onClick={() => this.addProducttoDB(this.state.singlePlace._id)}
-
-
-                color="black" outlined rounded size="large" >Favourites</button>
-            </Jumbotron>
             {this.props.currentUser && this.props.currentUser.username &&
               <div>
                 <input onChange={this.changeNameHandler} value={this.state.newreviews} type="text"></input>
 
-                <button onClick={() => this.addNewreviewhandler(this.state.singlePlace._id)} > Add a review </button>
+                <Button onClick={() => this.addNewreviewhandler(this.state.singlePlace._id)} > Add a review </Button>
               </div>
             }
             <Jumbotron>
 
               <h3>Reviews</h3>
               {this.state.singlePlace.reviews.map(review => {
+                console.log("populated reviews", review)
                 return (<div>
                   <p>posted by <br></br> {review}</p>
 
@@ -143,12 +158,19 @@ ok
 
               })}
             </Jumbotron>
+            <h1>Other places you can look in {this.state.singlePlace.region} </h1>
+            {relatedPlaces.map(related => {
+              return (
+                <div>
+                  <div class="Kart-card">
 
-            {this.state.related.map(related => {
-              return (<div>
-                <p>{related.name}</p>
+                    <h1> <Link to={"/Place/" + related._id} >{related.name}</Link></h1>
+                    <h2>description:{related.smalldescription}</h2>
+                  </div>
 
-              </div>)
+
+
+                </div>)
 
 
             })}

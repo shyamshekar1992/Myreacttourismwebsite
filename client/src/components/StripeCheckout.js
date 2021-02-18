@@ -1,7 +1,7 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-const StripeCheckoutButton = ({ price }) => {
+const StripeCheckoutButton = ({ price, purchasedProducts }) => {
   const priceForStripe = price * 100;
   const publishableKey = 'pk_test_51IJTHJFDXsNZkRh1lYNgpqKcDzubggG5iVp7hqfUrs8BeODodPY1TjZVa6I3CjXSiYvZZaLX55NwXY7hhPyyHaDh00cF9nCbGE';
   const onToken = (token) => {
@@ -15,13 +15,10 @@ const StripeCheckoutButton = ({ price }) => {
       },
     })
       .then((response) => {
-        alert('Payment successful');
-        axios({
-          url: 'localhost:8888/api/sucess',
-          method: 'post',
-          data: {
-            price
-          },
+
+        axios.post('/api/sucess', { purchasedProducts: purchasedProducts }).then(() => {
+          alert('payment success and stored in db')
+
         })
       })
       .catch((error) => {
@@ -31,10 +28,11 @@ const StripeCheckoutButton = ({ price }) => {
         );
       });
   };
+
   return (
     <StripeCheckout
       label="Pay Now"
-      name="Samp Shop Ltd."
+      name="My shop."
       billingAddress
       shippingAddress
       description={`Your total is $${price}`}

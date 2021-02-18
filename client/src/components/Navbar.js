@@ -1,47 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
 export default class Nav2 extends React.Component {
   render() {
     return (
-      <nav className="Nav">
-        <div className="Nav__container">
-          <Link to="/" className="Nav__brand">
-            {/* <img src="logo.svg" className="Nav__logo" alt="logo name" /> */}
-          </Link>
 
-          <div className="Nav__right">
-            <ul className="Nav__item-wrapper">
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/">Home</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/All"> Explore</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Customer support</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/map">About us</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Offers</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Career</Link>
-              </li>
-              <li className="Nav__item">
-                <Link className="Nav__link" to="/Random">Tour Pics</Link>
-              </li>
-              <li className="Nav__item">
-                <Link aria-disabled className="Nav__link" to="/Random">Admin Panel</Link>
-              </li>
+      <>
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="/">
+            <img
+              src="logo192.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>          <Nav className="mr-auto">
+            <Nav.Link href="/all">Explore</Nav.Link>
+            <Nav.Link href="/map">About us</Nav.Link>
+            <Nav.Link href="/Offer">Offers</Nav.Link>
+          </Nav>
 
-            </ul>
-          </div>
-        </div>
-      </nav>
-    );
+          <Navbar.Collapse className="justify-content-end">
+            <Nav.Link href="/login">Login</Nav.Link>
+
+            <Navbar.Text colour="white">
+              Signed in as: <a href="/User">{this.props.user}</a>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Navbar>
+
+
+      </>
+
+    )
   }
 }

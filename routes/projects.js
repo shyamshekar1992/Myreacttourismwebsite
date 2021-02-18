@@ -63,7 +63,7 @@ router.delete('/projects/:id', (req, res, next) => {
 
 const stripe = require('stripe')('sk_test_51IJTHJFDXsNZkRh1BHAgAneXmIEs4y8qVSbGITxZrX9QUBOIbnGEf26aQtVnBdxaohhcJ2OY0QKltDCIxugs7EXp00yVTLA3GC');
 
-const YOUR_DOMAIN = 'http://localhost:3000/kart'; // have to change before DEPLOY !
+const YOUR_DOMAIN = 'http://localhost:3000/kart/'; // have to change before DEPLOY !
 router.post('/payment', async (req, res) => {
   const body = {
     source: req.body.token.id,
@@ -82,10 +82,9 @@ router.post('/payment', async (req, res) => {
   });
 });
 router.post('/sucess', (req, res) => {
-  console.log("pushed pricrei in db", req.body.data.price)
+  console.log("pushed products in db", req.body.purchasedProducts)
   User.findByIdAndUpdate(req.session.currentUser._id, {
-    $push: { purchased: req.body.data.price }
-    //cart: [req.body.newCartItem]
+    $push: { purchased: req.body.purchasedProducts }
   }).then((result) => {
     res.json({ msg: 'update success' })
   })

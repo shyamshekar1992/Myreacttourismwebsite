@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Container from 'react-bootstrap/Container'
+
 
 function WeatherFetch(props) {
   const key = 'be4233acd5018612702aa3a2356a654d';
@@ -28,19 +27,16 @@ function WeatherFetch(props) {
   }, [props.city])
   return (
 
-    <div>
-      <Container>
-        <Jumbotron>
+    <div class="Kart-card">
 
-          <h1>Main Temperature : {mainTemp} Degrees Celsius</h1>
-          <h2>Feels like: {feels_like} Degrees Celsius</h2>
-          <h3>Weather Parameter: {main}</h3>
-          <h4>Description : {description}</h4>
-          <img src={"http://openweathermap.org/img/wn/" + iconID + "@2x.png"} />
-        </Jumbotron>
 
-      </Container>
-    </div>
+      <h1>Main Temperature : {mainTemp} Degrees Celsius</h1>
+      <h2>Feels like: {feels_like} Degrees Celsius</h2>
+      <h3>Weather Parameter: {main}</h3>
+      <h4>Description : {description}</h4>
+      <img src={"http://openweathermap.org/img/wn/" + iconID + "@2x.png"} />
+
+    </div >
 
   )
 }

@@ -7,9 +7,7 @@ export default class Nav2 extends React.Component {
     return (
       <div>
         <Nav className="justify-content-center" activeKey="/all">
-          <Nav.Item>
-            <Nav.Link href="/all">Explore</Nav.Link>
-          </Nav.Item>
+
           <Nav.Item>
             <Nav.Link href="/user">My page</Nav.Link>
           </Nav.Item>
@@ -17,13 +15,13 @@ export default class Nav2 extends React.Component {
             <Nav.Link href="/Form">Contact Form</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/Kart">Check Out</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
             <Nav.Link href="/chat/1">Customer Support</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="/Userupdate">Update Details</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/Kart">Kart</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link eventKey="disabled" disabled>

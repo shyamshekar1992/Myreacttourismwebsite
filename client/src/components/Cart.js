@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import StripecheckoutButton from './StripeCheckout'
+import { Link } from 'react-router-dom';
+
 
 
 export default class Shopping extends Component {
@@ -88,21 +90,22 @@ export default class Shopping extends Component {
 
             console.log("console............", this.state.totalPrice)
             return (
-              <div >
-                <Jumbotron>
+              <section class="Kart-card">
 
-                  <h4>{product.name}</h4>
-                  <span>{product.description}</span>
-                  <p>{product.quantity}</p>
-                  <h4>${product.quantity * product.price}</h4>
+                <div >
+
+                  <h1> <Link to={"Place/" + product._id} >{product.name}</Link></h1>
+                  <p>Qunatity:{product.quantity}</p>
+                  <h4>total:${product.quantity * product.price}</h4>
                   <Button variant="outline-dark" onClick={() => this.deleteHandler(product._id)} >delete </Button>
                   <Button variant="outline-dark" onClick={() => this.handleIncrementClick(product._id)} >+ </Button>
                   <Button variant="outline-dark" onClick={() => this.handledecrementclick(product._id)} >- </Button>
-                </Jumbotron>
 
 
-                <br></br>
-              </div>
+                  <br></br>
+                </div>
+              </section>
+
             )
           })
         }
@@ -110,7 +113,7 @@ export default class Shopping extends Component {
 
           <h5>Final price {totalP} </h5>
           <h5>total number of items {(this.state.products).length}  </h5>
-          <StripecheckoutButton price={totalP} />
+          <StripecheckoutButton price={totalP} purchasedProducts={this.state.products} />
 
         </Jumbotron>
 

@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Jumbotron } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
+
+
 
 export default () => {
   const [status, setStatus] = useState({
@@ -62,55 +66,58 @@ export default () => {
     <main>
       <h1>Fill the contact form if you have any queries we will get back to you as soon as possible!</h1>
       <hr />
-      <form onSubmit={handleOnSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          name="_name"
-          onChange={handleOnChange}
-          required
-          value={inputs.name}
-        />
-        <br></br>
-        <br></br>
-        <br></br>
+      <Jumbotron>
+        <form onSubmit={handleOnSubmit}>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="_name"
+            onChange={handleOnChange}
+            required
+            value={inputs.name}
+          />
+          <br></br>
+          <br></br>
+          <br></br>
 
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          name="_replyto"
-          onChange={handleOnChange}
-          required
-          value={inputs.email}
-        />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="_replyto"
+            onChange={handleOnChange}
+            required
+            value={inputs.email}
+          />
 
-        <br></br>
-        <br></br>
-        <br></br>
-        <label htmlFor="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          onChange={handleOnChange}
-          required
-          value={inputs.message}
-        />
+          <br></br>
+          <br></br>
+          <br></br>
+          <label htmlFor="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            onChange={handleOnChange}
+            required
+            value={inputs.message}
+          />
 
-        <br></br>
-        <br></br>
-        <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
 
 
-        <button type="submit" disabled={status.submitting}>
-          {!status.submitting
-            ? !status.submitted
-              ? 'Submit'
-              : 'Submitted'
-            : 'Submitting...'}
-        </button>
-      </form>
+          <Button type="submit" disabled={status.submitting}>
+            {!status.submitting
+              ? !status.submitted
+                ? 'Submit'
+                : 'Submitted'
+              : 'Submitting...'}
+          </Button>
+        </form>
+      </Jumbotron>
+
       {status.info.error && (
         <div className="error">Error: {status.info.msg}</div>
       )}
