@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Jumbotron } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 
@@ -15,7 +16,8 @@ class Details extends Component {
     singlePlace: {},
     newreviews: '',
     related: [],
-    places: []
+    places: [],
+    loading: true
 
 
   }
@@ -23,6 +25,8 @@ class Details extends Component {
 
 
   componentDidMount() {
+
+
     console.log(this.props)
     let id = this.props.match.params.potato
     //const place = this.props.location.state.singlePlace
@@ -31,7 +35,7 @@ class Details extends Component {
     axios.get('/api/projects').then((resp1) => {
       console.log(resp1.data)
       axios.get(`/api/projects/${id}`).then((resp2) => {
-        this.setState({ singlePlace: resp2.data, places: resp1.data })
+        this.setState({ singlePlace: resp2.data, places: resp1.data, loading: false })
       }
       )
 
@@ -110,8 +114,12 @@ class Details extends Component {
     console.log(relatedPlaces)
 
     return (
+
       <div>
 
+        {this.state.loading && <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>}
         <WeatherFetch city={this.state.singlePlace.code} />
 
         {this.state.singlePlace.name &&

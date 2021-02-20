@@ -29,7 +29,7 @@ import Nav2 from './components/Nav2'
 import Form from "./components/Form"
 import Drcypt from './components/MagicText'
 import Offer from "./components/Offer"
-
+import Magic from "./components/Magic"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -101,6 +101,8 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path='/' component={Cars}></Route>
+          <Route exact path='/mg' component={Magic}></Route>
+
 
 
           <Route exact path='/Chatroom' component={Home}></Route>
@@ -110,7 +112,6 @@ class App extends React.Component {
           <Route exact path='/login' component={Places}></Route>
           <Route exact path='/Signup' component={Signup}></Route>
 
-          <Route exact path='/magic' component={Drcypt}></Route>
           <Route exact path='/Userupdate' render={() => <Userupdate currentUser={this.state.currentUser} />}></Route>
 
 

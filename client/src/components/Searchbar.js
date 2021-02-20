@@ -35,35 +35,38 @@ let SearchBar = (props) => {
   //props.onStockChange
 
   return (
-    <div>
-      <Form inline className="mysearchbarform">
-        <div class="searchbar">
-          <FormControl type="text" name="" id="" placeholder="Search here for your fav places ..." onChange={searchHandler} value={props.searchTerm} />
-        </div>
-
-        <Row>
-          <Col xs>   <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler} />
-            <p>price less than 100</p></Col>
-          <Col xs={{ order: 12 }}><input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler2} />
-            <p>price less than 500</p></Col>
-          <Col xs={{ order: 1 }}> <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler3} />
-            <p>price less than 1000</p></Col>
-        </Row>
-
-
-
-
-
-
+    <Container>
+      <Row>
+        <Form inline className="mysearchbarform">
+          <div class="searchbar">
+            <FormControl type="text" name="" id="" placeholder="Search here for your fav places ..." onChange={searchHandler} value={props.searchTerm} />
+          </div>
+        </Form>
+      </Row>
+      <Row>
+        <Col xs={6} md={3}>   <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler} />
+          <p>price less than 100</p></Col>
+        <Col xs={6} md={3} ><input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler2} />
+          <p>price less than 500</p></Col>
+        <Col xs={6} md={3} > <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler3} />
+          <p>price less than 1000</p></Col>
+        <Col xs={6} md={3} > <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler4} />
+          <p>price less than 1200</p></Col>
+      </Row>
 
 
-        <input type="checkbox" name="SOMETHING" id="" onChange={checkboxHandler4} />
-        <p>price less than 1200</p>
 
 
-      </Form>
 
-    </div >
+
+
+
+
+
+
+
+
+    </Container>
   )
 
 }
